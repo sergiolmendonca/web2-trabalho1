@@ -7,6 +7,7 @@ const db = [
         role: "ADMIN",  // tipo
         status: "ACTIVE",
         email: "vinicius.machado@riogrande.ifrs.edu.br",
+        password: "123456",
         createdAt: "2025-08-26"
     },
     {
@@ -16,6 +17,7 @@ const db = [
         role: "ADMIN",  // tipo
         status: "DELETED",
         email: "vinicius.machado@riogrande.ifrs.edu.br",
+        password: "123456",
         createdAt: "2025-08-26"
     },
     {
@@ -25,10 +27,16 @@ const db = [
         role: "STUDENT",  // tipo
         status: "INACTIVE",
         email: "david.maioto@aluno.riogrande.ifrs.edu.br",
+        password: "123456",
         createdAt: "2025-08-26"
     }
 ]
 
 export function select(filter) {
     return [...db];
+}
+
+export function insert(user) {
+    user.createdAt = new Date().toISOString().slice(0, 10);
+    db.push(user);
 }

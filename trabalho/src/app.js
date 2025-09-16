@@ -12,6 +12,8 @@ app.set("views", "./src/views");
 
 app.use('/users', usersRouter);
 
+app.use(express.static('/public/javascript/'));
+
 // pagina inicial => mapeada para /users/lista
 app.get('/', (req, res) => {
     res.redirect('/users/lista');

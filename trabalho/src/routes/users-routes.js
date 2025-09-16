@@ -1,19 +1,19 @@
 import { Router } from "express"
-import { mostraListaUsuarios, mostraPaginaCriacaoUsuario } from "../controller/users-controller.js";
+import * as usuarioControler from "../controller/users-controller.js";
 
 const usersRouter = Router();
 
 const respostaPadrao = (req, res) => { res.send("FUNCIONA") };
 
-usersRouter.get('/lista',  mostraListaUsuarios);
+usersRouter.get('/lista',  usuarioControler.mostraListaUsuarios);
 
 // montar o formulario (visualizar a tela onde vai ser preenchido)
-usersRouter.get('/criar',  mostraPaginaCriacaoUsuario);
+usersRouter.get('/criar',  usuarioControler.mostraPaginaCriacaoUsuario);
 // receber os dados e processar
-usersRouter.post('/criar', respostaPadrao);
+usersRouter.post('/criar', usuarioControler.criarUsuario);
 
-usersRouter.get('/edit',   respostaPadrao);
-usersRouter.post('/edit',  respostaPadrao);
+usersRouter.get('/edit/:id',   usuarioControler.mostraPaginaCriacaoUsuario);
+usersRouter.post('/edit',  usuarioControler.editarUsuario);
 
 usersRouter.get('/delete', respostaPadrao);
 
